@@ -17,7 +17,7 @@ class AlbumDetails extends Component {
 		const albumTracks = album.tracks.track.map((song, index) => {
 			return (
 				<tr key={song.name}>
-					<th>{index}</th>
+					<th>{index+1}</th>
 					<th>
 						<a target="_blank" href={song.url}>
 							{song.name}
