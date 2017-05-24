@@ -61,9 +61,43 @@ class App extends Component {
 			</div>
 
 			)
-
 	}
 
+	componentDidMount() {
+		// Bloodhound
+		var albums = new Bloodhound({
+			datumTokenizer: function (datum) {
+				return Bloodhound.tokenizers.whitespace(datum.value);
+			},
+			queryTokenizer: Bloodhound.tokenizers.whitespace,
+			remote: {
+				wildcard: '%QUERY',
+				url:'http://ws.audioscrobbler.com/2.0/?method=album.search&api_key=b6510cbde8044a68c1c10fe084b44a1f&format=json&album=%QUERY',
+				filter: function(albums) {
+					// Map the remote source JSON array to a JS object array
+					return $.map(albums.results.albummatches.album, function(album) {
+						return {
+							value: album.name,
+							id: album.mbid
+						};
+					});
+				}
+
+			}
+		});
+		albums.initialize();
+
+		// Typeahead
+		$('.typeahead').typeahead({
+			display: 'value',
+			hint: true,
+			highlight: true,
+			minLength: 3
+		}, {source: albums.ttAdapter()}).on('typeahead:selected', function(obj, datum) {
+			console.log(obj, datum);
+			this.getAlbum(datum.id)
+		}.bind(this));
+	}
 }
 
 ReactDOM.render(
