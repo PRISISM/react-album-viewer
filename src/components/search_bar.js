@@ -11,7 +11,7 @@ class SearchBar extends Component {
 		return (
 			<div className="control bloodhound">
 				<input 
-				className="typeahead"
+				className="input typeahead"
 				/>
 			</div>
 		);

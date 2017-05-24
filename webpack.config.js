@@ -20,7 +20,10 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
+    alias: {
+      'handlebars' : 'handlebars/dist/handlebars.js'
+    }
   },
   devServer: {
     historyApiFallback: true,
