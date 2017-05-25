@@ -117,6 +117,7 @@
 				currentAlbum: null,
 				loaded: false
 			};
+			_this.getAlbum('The Blue Hearts', 'The Blue Hearts');
 
 			return _this;
 		}
@@ -141,13 +142,17 @@
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
-					_reactLoader2.default,
-					{ loaded: this.state.loaded, className: 'react-loading', scale: 2.00 },
+					'div',
+					null,
 					_react2.default.createElement(
 						'div',
 						{ className: 'container outer-container' },
 						_react2.default.createElement(_search_bar2.default, null),
-						_react2.default.createElement(_album_details2.default, { album: this.state.currentAlbum })
+						_react2.default.createElement(
+							_reactLoader2.default,
+							{ loaded: this.state.loaded, scale: 2.00 },
+							_react2.default.createElement(_album_details2.default, { album: this.state.currentAlbum })
+						)
 					),
 					_react2.default.createElement(_footer2.default, null)
 				);
@@ -155,7 +160,6 @@
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				this.getAlbum('The Blue Hearts', 'The Blue Hearts');
 
 				// Bloodhound
 				var albums = new Bloodhound({
@@ -27249,7 +27253,7 @@
 					_react2.default.createElement('input', {
 						className: 'input is-outlined is-large typeahead form-control',
 						type: 'text',
-						placeholder: 'Search for an album here'
+						placeholder: 'Search for an album here...'
 					})
 				);
 			}
