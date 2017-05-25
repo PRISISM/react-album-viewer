@@ -29,6 +29,7 @@ class App extends Component {
 			currentAlbum: null,
 			loaded: false
 		}
+		this.getAlbum('The Blue Hearts', 'The Blue Hearts');
 
 	}
 
@@ -51,18 +52,19 @@ class App extends Component {
 
 	render() {
 		return (
-			<Loader loaded={this.state.loaded} className="react-loading" scale={2.00}>
+			<div>
 				<div className="container outer-container">
 					<SearchBar />
+					<Loader loaded={this.state.loaded}  scale={2.00}>
 					<AlbumDetails album={this.state.currentAlbum}/>
+					</Loader>
 				</div>
 				<Footer />
-			</Loader>
+			</div>
 			)
 	}
 
 	componentDidMount() {
-		this.getAlbum('The Blue Hearts', 'The Blue Hearts');
 
 		// Bloodhound
 		var albums = new Bloodhound({

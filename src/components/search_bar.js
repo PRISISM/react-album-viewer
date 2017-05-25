@@ -13,7 +13,7 @@ class SearchBar extends Component {
 				<input 
 				className="input is-outlined is-large typeahead form-control"
 				type="text"
-				placeholder="Search for an album here"
+				placeholder="Search for an album here..."
 				/>
 			</div>
 		);
