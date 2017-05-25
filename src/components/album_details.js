@@ -74,7 +74,7 @@ class AlbumDetails extends Component {
 
 					<div className="column">
 						<p className="album-title">
-							<EllipsisText text={album.name} length={25} tooltip={true} />
+							<EllipsisText text={album.name} length={30} tooltip={true} />
 						</p>
 
 						<p className="subtitle">

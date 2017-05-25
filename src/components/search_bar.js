@@ -9,18 +9,14 @@ class SearchBar extends Component {
 
 	render() {
 		return (
-			<div className="control bloodhound search-wrapper">
+			<div className="bloodhound search-wrapper has-text-centered">
 				<input 
-				className="input typeahead"
+				className="input is-outlined is-large typeahead"
 				/>
 			</div>
 		);
 	}
 
-	// onInputChange(term) {
-	// 	this.setState({term});
-	// 	this.props.onSearchTermChange(term);
-	// };
 
 }
 

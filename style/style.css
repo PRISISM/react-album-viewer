@@ -21,6 +21,14 @@ html {
 	padding-top: 50px;
 	padding-bottom: 50px;
 }
+
+/*.twitter-typeahead, .typeahead {
+	width: 100%;
+	background: none;
+	border-bottom: solid 1px #fff;
+}
+*/
+
 .album-image {
 	max-height: 250px;
 	max-width: 250px;
