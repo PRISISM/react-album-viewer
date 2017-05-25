@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Handlebars from 'handlebars';
+import Loader from 'react-loader';
 
 import SearchBar from './components/search_bar';
 import AlbumDetails from './components/album_details';
+import Footer from './components/footer';
 
 const API_KEY = 'b6510cbde8044a68c1c10fe084b44a1f';
 const SEARCH_API_URL = 'http://ws.audioscrobbler.com/2.0/?method=album.search&api_key=b6510cbde8044a68c1c10fe084b44a1f&format=json&album='
@@ -24,9 +26,9 @@ class App extends Component {
 		super(props);
 
 		this.state = {
-			currentAlbum: null
+			currentAlbum: null,
+			loaded: false
 		}
-		this.getAlbum('The Blue Hearts', 'The Blue Hearts');
 
 	}
 
@@ -40,21 +42,27 @@ class App extends Component {
 		fetch(searchUrl, searchInit).then((response) => {
 			return response.json();
 		}).then((results) => {
-			this.setState({currentAlbum: results.album});
+			this.setState({
+				currentAlbum: results.album,
+				loaded: true
+			});
 		});
 	};
 
 	render() {
 		return (
-			<div className="container outer-container">
-				<SearchBar />
-				<AlbumDetails album={this.state.currentAlbum}/>
-
-			</div>
+			<Loader loaded={this.state.loaded} className="react-loading" scale={2.00}>
+				<div className="container outer-container">
+					<SearchBar />
+					<AlbumDetails album={this.state.currentAlbum}/>
+				</div>
+				<Footer />
+			</Loader>
 			)
 	}
 
 	componentDidMount() {
+		this.getAlbum('The Blue Hearts', 'The Blue Hearts');
 
 		// Bloodhound
 		var albums = new Bloodhound({
