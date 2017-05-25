@@ -93,14 +93,14 @@ class App extends Component {
 
 		// Typeahead
 		$('.typeahead').typeahead({
-			hint: true,
+			hint: false,
 			highlight: true,
 			minLength: 3
 		}, {
 			source: albums.ttAdapter(),
 			display: 'value',
 			templates: {
-				suggestion: Handlebars.compile('<div><strong>{{value}}</strong> - {{artist}}</div>')
+				suggestion: Handlebars.compile('<div class="suggest-text"><span>{{value}}</span> - {{artist}}</div>')
 			}
 		}).on('typeahead:selected', function(obj, datum) {
 			this.getAlbum(datum.value, datum.artist);

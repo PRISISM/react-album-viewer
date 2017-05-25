@@ -11,7 +11,9 @@ class SearchBar extends Component {
 		return (
 			<div className="bloodhound search-wrapper has-text-centered">
 				<input 
-				className="input is-outlined is-large typeahead"
+				className="input is-outlined is-large typeahead form-control"
+				type="text"
+				placeholder="Search for an album here"
 				/>
 			</div>
 		);
