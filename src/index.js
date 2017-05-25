@@ -40,20 +40,9 @@ class App extends Component {
 		fetch(searchUrl, searchInit).then((response) => {
 			return response.json();
 		}).then((results) => {
-			console.log(results);
 			this.setState({currentAlbum: results.album});
 		});
 	};
-
-	// albumSearch(term) {
-	// 	let searchUrl = SEARCH_API_URL + term;
-
-	// 	fetch(searchUrl, searchInit).then((response) => {
-	// 		return response.json();
-	// 	}).then((results) => {
-	// 		console.log(results);
-	// 	});
-	// };
 
 	render() {
 		return (
