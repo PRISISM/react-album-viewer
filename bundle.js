@@ -92,7 +92,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var API_KEY = 'b6510cbde8044a68c1c10fe084b44a1f';
-	var SEARCH_API_URL = 'http://ws.audioscrobbler.com/2.0/?method=album.search&api_key=b6510cbde8044a68c1c10fe084b44a1f&format=json&album=';
+	var SEARCH_API_URL = 'https://ws.audioscrobbler.com/2.0/?method=album.search&api_key=b6510cbde8044a68c1c10fe084b44a1f&format=json&album=';
 
 	var myHeaders = new Headers({
 		'Access-Control-Allow-Origin': '*'
@@ -126,7 +126,7 @@
 			value: function getAlbum(name, artist) {
 				var _this2 = this;
 
-				var searchUrl = 'http://ws.audioscrobbler.com/2.0/?method=album.getinfo\n\t\t&api_key=b6510cbde8044a68c1c10fe084b44a1f\n\t\t&format=json\n\t\t&album=' + name + '\n\t\t&artist=' + artist;
+				var searchUrl = 'https://ws.audioscrobbler.com/2.0/?method=album.getinfo\n\t\t&api_key=b6510cbde8044a68c1c10fe084b44a1f\n\t\t&format=json\n\t\t&album=' + name + '\n\t\t&artist=' + artist;
 
 				fetch(searchUrl, searchInit).then(function (response) {
 					return response.json();
@@ -165,7 +165,7 @@
 					queryTokenizer: Bloodhound.tokenizers.whitespace,
 					remote: {
 						wildcard: '%QUERY',
-						url: 'http://ws.audioscrobbler.com/2.0/?method=album.search&api_key=b6510cbde8044a68c1c10fe084b44a1f&format=json&album=%QUERY',
+						url: 'https://ws.audioscrobbler.com/2.0/?method=album.search&api_key=b6510cbde8044a68c1c10fe084b44a1f&format=json&album=%QUERY',
 						filter: function filter(albums) {
 							// Map the remote source JSON array to a JS object array
 							return $.map(albums.results.albummatches.album, function (album) {

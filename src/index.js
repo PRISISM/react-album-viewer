@@ -8,7 +8,7 @@ import AlbumDetails from './components/album_details';
 import Footer from './components/footer';
 
 const API_KEY = 'b6510cbde8044a68c1c10fe084b44a1f';
-const SEARCH_API_URL = 'http://ws.audioscrobbler.com/2.0/?method=album.search&api_key=b6510cbde8044a68c1c10fe084b44a1f&format=json&album='
+const SEARCH_API_URL = 'https://ws.audioscrobbler.com/2.0/?method=album.search&api_key=b6510cbde8044a68c1c10fe084b44a1f&format=json&album='
 
 const myHeaders = new Headers({
 	'Access-Control-Allow-Origin':'*'
@@ -33,7 +33,7 @@ class App extends Component {
 	}
 
 	getAlbum(name, artist) {
-		let searchUrl = `http://ws.audioscrobbler.com/2.0/?method=album.getinfo
+		let searchUrl = `https://ws.audioscrobbler.com/2.0/?method=album.getinfo
 		&api_key=b6510cbde8044a68c1c10fe084b44a1f
 		&format=json
 		&album=${name}
@@ -72,7 +72,7 @@ class App extends Component {
 			queryTokenizer: Bloodhound.tokenizers.whitespace,
 			remote: {
 				wildcard: '%QUERY',
-				url:'http://ws.audioscrobbler.com/2.0/?method=album.search&api_key=b6510cbde8044a68c1c10fe084b44a1f&format=json&album=%QUERY',
+				url:'https://ws.audioscrobbler.com/2.0/?method=album.search&api_key=b6510cbde8044a68c1c10fe084b44a1f&format=json&album=%QUERY',
 				filter: function(albums) {
 					// Map the remote source JSON array to a JS object array
 					return $.map(albums.results.albummatches.album, function(album) {
