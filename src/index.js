@@ -25,7 +25,6 @@ class App extends Component {
 
 		this.state = {
 			currentAlbum: null
-
 		}
 		this.getAlbum('The Blue Hearts', 'The Blue Hearts');
 
@@ -46,28 +45,28 @@ class App extends Component {
 		});
 	};
 
-	albumSearch(term) {
-		let searchUrl = SEARCH_API_URL + term;
+	// albumSearch(term) {
+	// 	let searchUrl = SEARCH_API_URL + term;
 
-		fetch(searchUrl, searchInit).then((response) => {
-			return response.json();
-		}).then((results) => {
-			console.log(results);
-		});
-	};
+	// 	fetch(searchUrl, searchInit).then((response) => {
+	// 		return response.json();
+	// 	}).then((results) => {
+	// 		console.log(results);
+	// 	});
+	// };
 
 	render() {
 		return (
-			<div className="container">
-				<SearchBar onSearchTermChange={(term) => this.albumSearch(term)} />
+			<div className="container outer-container">
+				<SearchBar />
 				<AlbumDetails album={this.state.currentAlbum}/>
 
 			</div>
-
 			)
 	}
 
 	componentDidMount() {
+
 		// Bloodhound
 		var albums = new Bloodhound({
 			datumTokenizer: function (datum) {
@@ -104,7 +103,6 @@ class App extends Component {
 				suggestion: Handlebars.compile('<div><strong>{{value}}</strong> - {{artist}}</div>')
 			}
 		}).on('typeahead:selected', function(obj, datum) {
-			console.log(obj, datum);
 			this.getAlbum(datum.value, datum.artist);
 		}.bind(this));
 	}
