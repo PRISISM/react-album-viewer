@@ -9,7 +9,7 @@ class SearchBar extends Component {
 
 	render() {
 		return (
-			<div className="control bloodhound">
+			<div className="control bloodhound search-wrapper">
 				<input 
 				className="input typeahead"
 				/>

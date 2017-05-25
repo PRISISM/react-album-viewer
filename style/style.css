@@ -1,6 +1,10 @@
+html {
+	height: 100%;
+}
+
  body {
- 	height: 100%;
-	background: #16222A;  /* fallback for old browsers */
+ 	min-height: 100%;
+    background: #16222A;  /* fallback for old browsers */
 	background: -webkit-linear-gradient(to bottom, #3A6073, #16222A);  /* Chrome 10-25, Safari 5.1-6 */
 	background: linear-gradient(to bottom, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
@@ -9,12 +13,13 @@
     animation: fadein ease-out 1.4s;
 }
 
-.main-wrapper {
-	margin-top: 75px;
-}
-
 .outer-container{
 	padding-bottom: 100px !important;
+}
+
+.search-wrapper {
+	padding-top: 50px;
+	padding-bottom: 50px;
 }
 .album-image {
 	max-height: 250px;
@@ -23,6 +28,7 @@
 
 .album-info-row {
 	max-height: 250px;
+	margin-bottom: 75px !important;
 }
 
 .track-table {

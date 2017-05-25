@@ -1,18 +1,33 @@
 import React, {Component} from 'react';
 
+import EllipsisText from 'react-ellipsis-text';
 import secToMin from 'sec-to-min';
 
 class AlbumDetails extends Component {
 
 	constructor(props) {
 		super(props);
+
+		this.state = {
+			loaded: false
+		}
 	};
+
+	componentDidMount() {
+		this.onSuccess();
+	}
+
+	onSuccess() {
+		this.setState({loaded: true})
+	}
 
 	render() {
 
 		if (!this.props.album) {
+
 			return null;
 		}
+
 
 		const album = this.props.album;
 
@@ -32,25 +47,34 @@ class AlbumDetails extends Component {
 
 		const albumTags = album.tags.tag.map((tag) => {
 			return (
-				<span className="tag">
+				<span className="tag" key={tag.name}>
 					{tag.name}
 				</span>
 				);
 		});
 
+		var albumImage = "";
+
+		if (album.image[album.image.length-2]['#text'] == "") {
+			var albumImage = 'http://placehold.it/250x250';
+		}
+		else {
+			var albumImage = album.image[album.image.length-2]['#text'];
+		}
+
 		return (
-			<div className="box main-wrapper">
+			<section className="section box main-wrapper">
 				<div className="columns is-mobile album-info-row">
 					<div className="column is-one-quarter">
 						<figure className="image">
 							<img className="album-image" 
-							src={album.image[album.image.length-2]['#text']} />
+							src={albumImage} />
 						</figure>
 					</div>
 
 					<div className="column">
 						<p className="album-title">
-							{album.name}
+							<EllipsisText text={album.name} length={25} tooltip={true} />
 						</p>
 
 						<p className="subtitle">
@@ -76,8 +100,7 @@ class AlbumDetails extends Component {
 						{albumTracks}
 					</tbody>
 				</table>
-			</div>
-
+			</section>
 			)
 
 	}
